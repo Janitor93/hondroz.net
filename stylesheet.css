@@ -1,0 +1,40 @@
+body {
+    width: 100%;
+}
+#content, #nav {
+    padding: 10px;
+    margin: 10px;
+    margin-top: 20px;
+}
+#content {
+    width: 70%;
+    float: left;
+}
+#nav {
+    width: 27%;
+    float: right;
+}
+/*.sec {*/
+    /*width: 200px;*/
+    /*height: 100px;*/
+    /*background-color: aquamarine;*/
+/*}*/
+h1 {
+    text-align: center;
+}
+#exercise {
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+}
+#interface {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.bar {
+    width: 40%;
+}
+h1 > a:hover {
+    text-decoration: none;
+}
