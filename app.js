@@ -24,7 +24,7 @@ app.config(function($routeProvider) {
         })
         .when('/5', {
             templateUrl: "pages/5.html",
-            controller: "mainControler"
+            controller: "mainController"
         })
         .when('/6', {
             templateUrl: "pages/6.html",
