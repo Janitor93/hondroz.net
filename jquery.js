@@ -22,4 +22,7 @@
 //    });
 //    $('#myBtn').fadeOut("slow");
 //});
+$(document).ready(function() {
+    $("myBtn").fadeOut("slow");
+});
 

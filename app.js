@@ -39,6 +39,7 @@ app.controller("mainController", function($scope, $timeout) {
     $scope.cpod = 1;
     $scope.total = 0;
     $scope.btn = true;
+    
     $scope.sek = function () {
         if ($scope.counter != 0) {
             $scope.numer = true;
@@ -54,6 +55,7 @@ app.controller("mainController", function($scope, $timeout) {
             document.getElementById("myBtn").disabled = false;
         }
     };
+
     $scope.less = function() {
         if($scope.total != 10) {
             $scope.btn = false;
@@ -62,13 +64,11 @@ app.controller("mainController", function($scope, $timeout) {
                 $scope.message = null;
                 $timeout($scope.less, 1000);
                 $scope.counter--;
-                document.getElementById("myBtn").disabled = true;
             } else {
                 $scope.total++;
                 $scope.numer = false;
                 $scope.message = "Отдохни";
                 $scope.counter = 11;
-                document.getElementById("myBtn").disabled = false;
                 $timeout($scope.less, 10000);
                 if($scope.total != 10)
                     $timeout($scope.prepare, 7000);
@@ -78,7 +78,8 @@ app.controller("mainController", function($scope, $timeout) {
             $scope.message = "Готово! Можете перейти к следующему упражнению.";
         }
     };
+
     $scope.prepare = function() {
         $scope.message = "Приготовься";
-    }
+    };
 });
