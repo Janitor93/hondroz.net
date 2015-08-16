@@ -1,7 +1,11 @@
 <img src="img/less5.jpg" alt="лечитесь" class="img-rounded"/><br/>
 <p>Что бы запустился таймер, нажмите на кнопку и действуйте согласно указаниям на картинке</p>
-<div id="interface">
-    <button id="myBtn" ng-click="sek()" type="button" class="btn btn-success">Начать</button>
-    <span id="timer"><span ng-show="numer">{{counter}}</span> {{message}}</span>
-    <p>Количество сделаных подходов: {{total}} из 10</p>
+<button id="yesBtn" ng-click="progress()" type="button" class="btn btn-success">Начать</button>
+<button id="noBtn" ng-click="progress()" type="button" class="btn btn-success" disabled>Закончить</button>
+<div ng-show="bar">
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+        </div>
+    </div>
 </div>
+<div class="link"><a href="#/6"> {{link}} </a></div>

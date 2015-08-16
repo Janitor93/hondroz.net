@@ -84,29 +84,18 @@ app.controller("mainController", function($scope, $timeout) {
         $scope.message = "Приготовься";
     };
 
-    //addEventListener('load', progress, false);
-    //$scope.progress = function() {
-        //$($document).ready(function() {
-        //$('.progress-bar').css('width', function (i) {
-        //    return $(this).width() + (i * 2);
-        //});
-        //});
-        //while(i!=100) {
-        //    var v = document.getElementById("progress").
-        //}
-
-    //};
     $scope.progress = function() {
-        $scope.bar = true;
+        if($scope.bar == false) {
+            $scope.bar = true;
+            document.getElementById("yesBtn").disabled = true;
+            document.getElementById("noBtn").disabled = false;
+            $scope.link = null;
+        }
+        else {
+            $scope.bar = false;
+            document.getElementById("yesBtn").disabled = false;
+            document.getElementById("noBtn").disabled = true;
+            $scope.link = "Можете перейти к следующему упражнению";
+        }
     };
-    //$scope.loader = {
-    //    loading: false,
-    //};
-    //
-    //$scope.showloader = function(){
-    //    $scope.loader.loading = true ;
-    //}
-    //$scope.hideloader = function(){
-    //    $scope.loader.loading = false ;
-    //}
 });
