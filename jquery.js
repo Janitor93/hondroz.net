@@ -22,7 +22,11 @@
 //    });
 //    $('#myBtn').fadeOut("slow");
 //});
-$(document).ready(function() {
-    $("myBtn").fadeOut("slow");
-});
+//$(document).ready(function() {
+//    $('.progress-bar').css('width', function (i) {
+//        return $(this).width() + (i * 2);
+//    });
+//});
+
+
 

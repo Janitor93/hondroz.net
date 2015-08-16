@@ -39,6 +39,7 @@ app.controller("mainController", function($scope, $timeout) {
     $scope.cpod = 1;
     $scope.total = 0;
     $scope.btn = true;
+    $scope.bar = false;
     
     $scope.sek = function () {
         if ($scope.counter != 0) {
@@ -82,4 +83,30 @@ app.controller("mainController", function($scope, $timeout) {
     $scope.prepare = function() {
         $scope.message = "Приготовься";
     };
+
+    //addEventListener('load', progress, false);
+    //$scope.progress = function() {
+        //$($document).ready(function() {
+        //$('.progress-bar').css('width', function (i) {
+        //    return $(this).width() + (i * 2);
+        //});
+        //});
+        //while(i!=100) {
+        //    var v = document.getElementById("progress").
+        //}
+
+    //};
+    $scope.progress = function() {
+        $scope.bar = true;
+    };
+    //$scope.loader = {
+    //    loading: false,
+    //};
+    //
+    //$scope.showloader = function(){
+    //    $scope.loader.loading = true ;
+    //}
+    //$scope.hideloader = function(){
+    //    $scope.loader.loading = false ;
+    //}
 });
