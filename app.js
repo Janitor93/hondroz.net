@@ -39,7 +39,7 @@ app.controller("mainController", function($scope, $timeout) {
     $scope.cpod = 1;
     $scope.total = 0;
     $scope.btn = true;
-    $scope.bar = false;
+    //$scope.bar = false;
     
     $scope.sek = function () {
         if ($scope.counter != 0) {
@@ -97,5 +97,13 @@ app.controller("mainController", function($scope, $timeout) {
             document.getElementById("noBtn").disabled = true;
             $scope.link = "Можете перейти к следующему упражнению";
         }
+    };
+
+    $scope.bar = function() {
+        var v = angular.element(document.querySelector(".progress-bar"));
+        v.css("width", "80%");
+
+
+        
     };
 });
