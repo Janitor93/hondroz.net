@@ -40,6 +40,7 @@ app.controller("mainController", function($scope, $timeout) {
     $scope.total = 0;
     $scope.btn = true;
     $scope.bar = false;
+    $scope.done = false;
     
     $scope.sek = function() {
         if ($scope.counter != 0) {
@@ -99,12 +100,13 @@ app.controller("mainController", function($scope, $timeout) {
     };
 
     var v = angular.element(document.querySelector(".progress-bar"));
+
     $scope.moveBar = function() {
         $scope.wid = parseInt(v.prop('offsetWidth'));
         if($scope.wid < 1100) {
             $scope.bar = true;
             $timeout($scope.moveBar, 2000);
-            $scope.wid = parseInt(v.prop('offsetWidth')) + 100;
+            $scope.wid = parseInt(v.prop('offsetWidth')) + 60;
             v.css("width", $scope.wid+"px");
             document.getElementById("yesBtn").disabled = true;
         } else {
@@ -112,5 +114,29 @@ app.controller("mainController", function($scope, $timeout) {
             $scope.link = "Можете перейти к следующему упражнению";
             document.getElementById("yesBtn").disabled = false;
         }
+    };
+
+    $scope.final = function() {
+        $scope.widBar = parseInt(v.prop('offsetWidth'));
+        if($scope.widBar < 1100) {
+            $scope.bar = true;
+            $timeout($scope.final, 750);
+            $scope.widBar = parseInt(v.prop('offsetWidth')) + 5;
+            v.css("width", $scope.widBar+"px");
+            document.getElementById("yesBtn").disabled = true;
+            document.getElementById("noBtn").disabled = false;
+        } else {
+            $scope.bar = false;
+            document.getElementById("yesBtn").disabled = false;
+            document.getElementById("noBtn").disabled = true;
+            $scope.done = true;
+        }
+    };
+
+    $scope.finalNo = function() {
+        document.getElementById("yesBtn").disabled = true;
+        document.getElementById("noBtn").disabled = false;
+        $scope.done = true;
+        $scope.bar = false;
     };
 });
