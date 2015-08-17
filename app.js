@@ -41,7 +41,7 @@ app.controller("mainController", function($scope, $timeout) {
     $scope.btn = true;
     $scope.bar = false;
     
-    $scope.sek = function () {
+    $scope.sek = function() {
         if ($scope.counter != 0) {
             $scope.numer = true;
             $scope.message = null;
@@ -57,20 +57,20 @@ app.controller("mainController", function($scope, $timeout) {
         }
     };
 
-    $scope.exer = function() {
+    $scope.exerciseFour = function() {
         if($scope.total != 10) {
             $scope.btn = false;
             if ($scope.counter != 0) {
                 $scope.numer = true;
                 $scope.message = null;
-                $timeout($scope.less, 1000);
+                $timeout($scope.exerciseFour, 1000);
                 $scope.counter--;
             } else {
                 $scope.total++;
                 $scope.numer = false;
                 $scope.message = "Отдохни";
                 $scope.counter = 11;
-                $timeout($scope.exer, 10000);
+                $timeout($scope.exerciseFour, 10000);
                 if($scope.total != 10)
                     $timeout($scope.prepare, 7000);
             }
