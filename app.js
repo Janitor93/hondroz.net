@@ -39,7 +39,7 @@ app.controller("mainController", function($scope, $timeout) {
     $scope.cpod = 1;
     $scope.total = 0;
     $scope.btn = true;
-    //$scope.bar = false;
+    $scope.bar = false;
     
     $scope.sek = function () {
         if ($scope.counter != 0) {
@@ -57,7 +57,7 @@ app.controller("mainController", function($scope, $timeout) {
         }
     };
 
-    $scope.less = function() {
+    $scope.exer = function() {
         if($scope.total != 10) {
             $scope.btn = false;
             if ($scope.counter != 0) {
@@ -70,7 +70,7 @@ app.controller("mainController", function($scope, $timeout) {
                 $scope.numer = false;
                 $scope.message = "Отдохни";
                 $scope.counter = 11;
-                $timeout($scope.less, 10000);
+                $timeout($scope.exer, 10000);
                 if($scope.total != 10)
                     $timeout($scope.prepare, 7000);
             }
@@ -90,8 +90,7 @@ app.controller("mainController", function($scope, $timeout) {
             document.getElementById("yesBtn").disabled = true;
             document.getElementById("noBtn").disabled = false;
             $scope.link = null;
-        }
-        else {
+        } else {
             $scope.bar = false;
             document.getElementById("yesBtn").disabled = false;
             document.getElementById("noBtn").disabled = true;
@@ -99,11 +98,19 @@ app.controller("mainController", function($scope, $timeout) {
         }
     };
 
-    $scope.bar = function() {
-        var v = angular.element(document.querySelector(".progress-bar"));
-        v.css("width", "80%");
-
-
-        
+    var v = angular.element(document.querySelector(".progress-bar"));
+    $scope.moveBar = function() {
+        $scope.wid = parseInt(v.prop('offsetWidth'));
+        if($scope.wid < 1100) {
+            $scope.bar = true;
+            $timeout($scope.moveBar, 2000);
+            $scope.wid = parseInt(v.prop('offsetWidth')) + 100;
+            v.css("width", $scope.wid+"px");
+            document.getElementById("yesBtn").disabled = true;
+        } else {
+            $scope.bar = false;
+            $scope.link = "Можете перейти к следующему упражнению";
+            document.getElementById("yesBtn").disabled = false;
+        }
     };
 });
