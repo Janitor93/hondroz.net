@@ -40,8 +40,9 @@ app.controller("mainController", function($scope, $timeout) {
     $scope.total = 0;
     $scope.btn = true;
     $scope.bar = false;
+    $scope.done = false;
     
-    $scope.sek = function () {
+    $scope.sek = function() {
         if ($scope.counter != 0) {
             $scope.numer = true;
             $scope.message = null;
@@ -57,20 +58,20 @@ app.controller("mainController", function($scope, $timeout) {
         }
     };
 
-    $scope.exer = function() {
+    $scope.exerciseFour = function() {
         if($scope.total != 10) {
             $scope.btn = false;
             if ($scope.counter != 0) {
                 $scope.numer = true;
                 $scope.message = null;
-                $timeout($scope.less, 1000);
+                $timeout($scope.exerciseFour, 1000);
                 $scope.counter--;
             } else {
                 $scope.total++;
                 $scope.numer = false;
                 $scope.message = "Отдохни";
                 $scope.counter = 11;
-                $timeout($scope.exer, 10000);
+                $timeout($scope.exerciseFour, 10000);
                 if($scope.total != 10)
                     $timeout($scope.prepare, 7000);
             }
@@ -99,17 +100,25 @@ app.controller("mainController", function($scope, $timeout) {
     };
 
     var v = angular.element(document.querySelector(".progress-bar"));
+<<<<<<< HEAD
     var k = angular.element(document.querySelector(".progress"));
     var b = parseInt(k.prop('offsetWidth'));
     //console.log(b);
     //$scope.wid = b/10;
+=======
+
+>>>>>>> master
     $scope.moveBar = function() {
         $scope.wid = parseInt(v.prop('offsetWidth'));
         if($scope.wid < b) {
             $scope.bar = true;
             $timeout($scope.moveBar, 2000);
+<<<<<<< HEAD
             //$scope.wid = parseInt(v.prop('offsetWidth')) + 100;
             $scope.wid = parseInt(v.prop('offsetWidth')) + b/20;
+=======
+            $scope.wid = parseInt(v.prop('offsetWidth')) + 60;
+>>>>>>> master
             v.css("width", $scope.wid+"px");
             document.getElementById("yesBtn").disabled = true;
         } else {
@@ -117,5 +126,29 @@ app.controller("mainController", function($scope, $timeout) {
             $scope.link = "Можете перейти к следующему упражнению";
             document.getElementById("yesBtn").disabled = false;
         }
+    };
+
+    $scope.final = function() {
+        $scope.widBar = parseInt(v.prop('offsetWidth'));
+        if($scope.widBar < 1100) {
+            $scope.bar = true;
+            $timeout($scope.final, 750);
+            $scope.widBar = parseInt(v.prop('offsetWidth')) + 5;
+            v.css("width", $scope.widBar+"px");
+            document.getElementById("yesBtn").disabled = true;
+            document.getElementById("noBtn").disabled = false;
+        } else {
+            $scope.bar = false;
+            document.getElementById("yesBtn").disabled = false;
+            document.getElementById("noBtn").disabled = true;
+            $scope.done = true;
+        }
+    };
+
+    $scope.finalNo = function() {
+        document.getElementById("yesBtn").disabled = true;
+        document.getElementById("noBtn").disabled = false;
+        $scope.done = true;
+        $scope.bar = false;
     };
 });
