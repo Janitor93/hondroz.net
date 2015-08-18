@@ -100,25 +100,16 @@ app.controller("mainController", function($scope, $timeout) {
     };
 
     var v = angular.element(document.querySelector(".progress-bar"));
-<<<<<<< HEAD
     var k = angular.element(document.querySelector(".progress"));
     var b = parseInt(k.prop('offsetWidth'));
     //console.log(b);
-    //$scope.wid = b/10;
-=======
 
->>>>>>> master
     $scope.moveBar = function() {
         $scope.wid = parseInt(v.prop('offsetWidth'));
         if($scope.wid < b) {
             $scope.bar = true;
             $timeout($scope.moveBar, 2000);
-<<<<<<< HEAD
-            //$scope.wid = parseInt(v.prop('offsetWidth')) + 100;
             $scope.wid = parseInt(v.prop('offsetWidth')) + b/20;
-=======
-            $scope.wid = parseInt(v.prop('offsetWidth')) + 60;
->>>>>>> master
             v.css("width", $scope.wid+"px");
             document.getElementById("yesBtn").disabled = true;
         } else {
@@ -128,12 +119,13 @@ app.controller("mainController", function($scope, $timeout) {
         }
     };
 
+    var speed = b/240;
     $scope.final = function() {
         $scope.widBar = parseInt(v.prop('offsetWidth'));
-        if($scope.widBar < 1100) {
+        if($scope.widBar < b) {
             $scope.bar = true;
             $timeout($scope.final, 750);
-            $scope.widBar = parseInt(v.prop('offsetWidth')) + 5;
+            $scope.widBar = parseInt(v.prop('offsetWidth')) + speed;
             v.css("width", $scope.widBar+"px");
             document.getElementById("yesBtn").disabled = true;
             document.getElementById("noBtn").disabled = false;
