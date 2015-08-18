@@ -99,12 +99,17 @@ app.controller("mainController", function($scope, $timeout) {
     };
 
     var v = angular.element(document.querySelector(".progress-bar"));
+    var k = angular.element(document.querySelector(".progress"));
+    var b = parseInt(k.prop('offsetWidth'));
+    //console.log(b);
+    //$scope.wid = b/10;
     $scope.moveBar = function() {
         $scope.wid = parseInt(v.prop('offsetWidth'));
-        if($scope.wid < 1100) {
+        if($scope.wid < b) {
             $scope.bar = true;
             $timeout($scope.moveBar, 2000);
-            $scope.wid = parseInt(v.prop('offsetWidth')) + 100;
+            //$scope.wid = parseInt(v.prop('offsetWidth')) + 100;
+            $scope.wid = parseInt(v.prop('offsetWidth')) + b/20;
             v.css("width", $scope.wid+"px");
             document.getElementById("yesBtn").disabled = true;
         } else {
