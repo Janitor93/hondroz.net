@@ -47,7 +47,7 @@ app.controller("mainController", function($scope, $timeout) {
             $scope.numer = true;
             $scope.message = null;
             $scope.counter--;
-            $timeout($scope.sek, 1000);
+            $scope.myTimeout = $timeout($scope.sek, 1000);
             document.getElementById("myBtn").disabled = true;
         } else {
             $scope.total++;
@@ -64,7 +64,7 @@ app.controller("mainController", function($scope, $timeout) {
             if ($scope.counter != 0) {
                 $scope.numer = true;
                 $scope.message = null;
-                $timeout($scope.exerciseFour, 1000);
+                $scope.myTimeout = $timeout($scope.exerciseFour, 1000);
                 $scope.counter--;
             } else {
                 $scope.total++;
@@ -73,7 +73,7 @@ app.controller("mainController", function($scope, $timeout) {
                 $scope.counter = 11;
                 $timeout($scope.exerciseFour, 10000);
                 if($scope.total != 10)
-                    $timeout($scope.prepare, 7000);
+                    $scope.myTimeout = $timeout($scope.prepare, 7000);
             }
         } else {
             $scope.numer = false;
@@ -108,7 +108,7 @@ app.controller("mainController", function($scope, $timeout) {
         $scope.wid = parseInt(v.prop('offsetWidth'));
         if($scope.wid < b) {
             $scope.bar = true;
-            $timeout($scope.moveBar, 2000);
+            $scope.myTimeout = $timeout($scope.moveBar, 2000);
             $scope.wid = parseInt(v.prop('offsetWidth')) + b/20;
             v.css("width", $scope.wid+"px");
             document.getElementById("yesBtn").disabled = true;
@@ -125,7 +125,7 @@ app.controller("mainController", function($scope, $timeout) {
          $scope.widBar = parseInt(v.prop('offsetWidth'));
          if ($scope.widBar < b) {
              $scope.bar = true;
-             $scope.timer = $timeout($scope.final, 750);
+             $scope.myTimeout = $timeout($scope.final, 750);
              $scope.widBar = parseInt(v.prop('offsetWidth')) + speed;
              v.css("width", $scope.widBar + "px");
              document.getElementById("yesBtn").disabled = true;
@@ -145,6 +145,10 @@ app.controller("mainController", function($scope, $timeout) {
         document.getElementById("noBtn").disabled = true;
         $scope.done = true;
         $scope.bar = false;
-        $timeout.cancel($scope.timer);
+        $timeout.cancel($scope.myTimeout);
     };
+
+    $scope.$on('$locationChangeStart', function() {
+        $timeout.cancel($scope.myTimeout);
+    });
 });
