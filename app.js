@@ -120,27 +120,31 @@ app.controller("mainController", function($scope, $timeout) {
     };
 
     var speed = b/240;
+
     $scope.final = function() {
-        $scope.widBar = parseInt(v.prop('offsetWidth'));
-        if($scope.widBar < b) {
-            $scope.bar = true;
-            $timeout($scope.final, 750);
-            $scope.widBar = parseInt(v.prop('offsetWidth')) + speed;
-            v.css("width", $scope.widBar+"px");
-            document.getElementById("yesBtn").disabled = true;
-            document.getElementById("noBtn").disabled = false;
-        } else {
-            $scope.bar = false;
-            document.getElementById("yesBtn").disabled = false;
-            document.getElementById("noBtn").disabled = true;
-            $scope.done = true;
-        }
+         $scope.widBar = parseInt(v.prop('offsetWidth'));
+         if ($scope.widBar < b) {
+             $scope.bar = true;
+             $scope.timer = $timeout($scope.final, 750);
+             $scope.widBar = parseInt(v.prop('offsetWidth')) + speed;
+             v.css("width", $scope.widBar + "px");
+             document.getElementById("yesBtn").disabled = true;
+             document.getElementById("noBtn").disabled = false;
+             $scope.done = false;
+         } else {
+             $scope.bar = false;
+             document.getElementById("yesBtn").disabled = false;
+             document.getElementById("noBtn").disabled = true;
+             $scope.done = true;
+         }
     };
 
+
     $scope.finalNo = function() {
-        document.getElementById("yesBtn").disabled = true;
-        document.getElementById("noBtn").disabled = false;
+        document.getElementById("yesBtn").disabled = false;
+        document.getElementById("noBtn").disabled = true;
         $scope.done = true;
         $scope.bar = false;
+        $timeout.cancel($scope.timer);
     };
 });
