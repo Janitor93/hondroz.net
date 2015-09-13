@@ -46,12 +46,12 @@ app.controller("mainController", function($scope, $timeout, $http) {
         $scope.lessons = data;
     });
     
-    $scope.sek = function() {
+    $scope.stopwatch = function() {
         if ($scope.counter != 0) {
             $scope.numer = true;
             $scope.message = null;
             $scope.counter--;
-            $scope.myTimeout = $timeout($scope.sek, 1000);
+            $scope.myTimeout = $timeout($scope.stopwatch, 1000);
             document.getElementById("myBtn").disabled = true;
         } else {
             $scope.total++;
