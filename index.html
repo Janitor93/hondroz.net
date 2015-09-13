@@ -24,12 +24,7 @@
     </div>
     <div id="nav" class="alert alert-success">
         <ul class="nav nav-pills nav-stacked">
-            <li><a href="#/1">Упражнение1</a></li>
-            <li><a href="#/2">Упражнение2</a></li>
-            <li><a href="#/3">Упражнение3</a></li>
-            <li><a href="#/4">Упражнение4</a></li>
-            <li><a href="#/5">Упражнение5</a></li>
-            <li><a href="#/6">Упражнение6</a></li>
+            <li ng-repeat="lesson in lessons"><a href="#/{{ lesson.url }}">{{ lesson.name }}</a></li>
         </ul>
     </div>
 </body>
