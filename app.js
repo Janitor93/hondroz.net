@@ -124,15 +124,17 @@ app.controller("mainController", function($scope, $timeout, $http) {
     };
 
     var speed = b/240;
+
     $scope.final = function() {
         $scope.widBar = parseInt(v.prop('offsetWidth'));
-        if($scope.widBar < b) {
+        if ($scope.widBar < b) {
             $scope.bar = true;
             $scope.myTimeout = $timeout($scope.final, 750);
             $scope.widBar = parseInt(v.prop('offsetWidth')) + speed;
-            v.css("width", $scope.widBar+"px");
+            v.css("width", $scope.widBar + "px");
             document.getElementById("yesBtn").disabled = true;
             document.getElementById("noBtn").disabled = false;
+            $scope.done = false;
         } else {
             $scope.bar = false;
             document.getElementById("yesBtn").disabled = false;
@@ -140,12 +142,13 @@ app.controller("mainController", function($scope, $timeout, $http) {
             $scope.done = true;
         }
     };
-
+    
     $scope.finalNo = function() {
-        document.getElementById("yesBtn").disabled = true;
-        document.getElementById("noBtn").disabled = false;
+        document.getElementById("yesBtn").disabled = false;
+        document.getElementById("noBtn").disabled = true;
         $scope.done = true;
         $scope.bar = false;
+        $timeout.cancel($scope.myTimeout);
     };
 
     $scope.$on('$locationChangeStart', function() {
