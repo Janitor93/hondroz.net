@@ -123,13 +123,13 @@ app.controller("mainController", function($scope, $timeout, $http) {
         }
     };
 
-    var speed = b/240;
+    var speed = b/180;
 
     $scope.final = function() {
         $scope.widBar = parseInt(v.prop('offsetWidth'));
         if ($scope.widBar < b) {
             $scope.bar = true;
-            $scope.myTimeout = $timeout($scope.final, 750);
+            $scope.myTimeout = $timeout($scope.final, 1000);
             $scope.widBar = parseInt(v.prop('offsetWidth')) + speed;
             v.css("width", $scope.widBar + "px");
             document.getElementById("yesBtn").disabled = true;
